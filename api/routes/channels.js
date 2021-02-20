@@ -4,7 +4,12 @@ const router = express.Router();
 /* get channels */
 router.get('/', async (req, res, next) => {
   const json = await req.clubhouse.getChannels()
-  console.log(json)
+  res.json(json);
+});
+
+/* get channel */
+router.get('/:code', async (req, res, next) => {
+  const json = await req.clubhouse.getChannel(req.params.code)
   res.json(json);
 });
 
