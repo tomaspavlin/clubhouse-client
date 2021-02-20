@@ -1,26 +1,22 @@
 import * as React from 'react';
 import Channel from './Channel';
 import Time from './Time';
+import { connect } from 'react-redux';
+import { fetchEvents, selectEvents } from '../store/events';
 
+// This could be function component but we want to have code interesting
 class Events extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { events: []};
-  }
-
-  async getEvents() {
-    let res = await fetch("http://localhost:9000/events")
-    res = await res.json()
-    this.setState({ events: res.events })
   }
 
   render() {
     return (
       <div>
         <h1>Events</h1>
-        <button onClick={() => this.getEvents()}>Refresh events</button>
+        <button onClick={() => this.props.fetchEvents()}>Refresh events</button>
         <ul>
-          {this.state.events.map(e => (
+          {this.props.events.map(e => (
             <div>
               <h2>{e.name}</h2>
               <p>
@@ -37,4 +33,11 @@ class Events extends React.Component {
   }
 }
 
-export default Events;
+/* Way how to map redux functionality to class component
+*  In function components we use useSelector and useDispatch resp instead
+*  This maps state selectors and state dispatches resp to props */
+export default connect(state => ({
+  events: selectEvents(state)
+}), {
+  fetchEvents
+})(Events);
