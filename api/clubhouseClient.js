@@ -10,9 +10,16 @@ const { Client, profiles } = require('clubhouse-api')
 
 const initializeClubhouseClient = () => {
   // Initialize clubhouse client
+  const czechLocale = {
+    languages: 'cs-CZ',
+    locale: 'cs-CZ',
+    acceptLanguages: 'en-US;q=1'
+  }
+
   const profile = {
     ...profiles.application.a304,
-    ...profiles.locales.Korean
+    ...profiles.locales.English,
+    // ...czechLocale
   }
   const profileLoc = path.join(__dirname, './profile.json')
 

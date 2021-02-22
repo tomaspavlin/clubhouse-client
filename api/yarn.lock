@@ -27,11 +27,6 @@ acorn@^2.1.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-2.7.0.tgz#ab6e7d9d886aaca8b085bc3312b79a198433f0e7"
   integrity sha1-q259nYhqrKiwhbwzEreaGYQz8Oc=
 
-agora-rtc-sdk-ng@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/agora-rtc-sdk-ng/-/agora-rtc-sdk-ng-4.3.0.tgz#08dba32fbf4777cffd7069f3c3e66a33b954c1c5"
-  integrity sha512-RAz+cM2bVK6Rr/H7F1XOUSL2VgMBBgqVWbKSBvSHJ6JzqsjFhU1Yt8a/HCtHrQEKpTj25JqUb9KGRtjoXxbifQ==
-
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/align-text/-/align-text-0.1.4.tgz#0cd90a561093f35d0a99256c22b7069433fad117"
@@ -124,11 +119,10 @@ cliui@^2.1.0:
     right-align "^0.1.1"
     wordwrap "0.0.2"
 
-"clubhouse-api@git+https://github.com/Seia-Soto/clubhouse-api#1.0.13":
-  version "1.0.13"
-  resolved "git+https://github.com/Seia-Soto/clubhouse-api#dc5702d5961fab8a70e597ab6cd8262bf2210053"
+"clubhouse-api@git+https://github.com/Seia-Soto/clubhouse-api#1.0.16":
+  version "1.0.16"
+  resolved "git+https://github.com/Seia-Soto/clubhouse-api#113b2736791471b4d57eb40281bc38eb5c1d55a4"
   dependencies:
-    agora-rtc-sdk-ng "^4.3.0"
     debug "^4.3.1"
     esm "^3.2.25"
     form-data "^3.0.0"

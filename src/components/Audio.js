@@ -7,7 +7,6 @@ import profileJson from '../profile.json';
 class Audio extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { channel: undefined};
 
     const profile = {}
     profile.token = profileJson.tokens.auth

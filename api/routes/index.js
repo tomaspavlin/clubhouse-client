@@ -39,8 +39,15 @@ router.get('/topics', async (req, res, next) => {
 });
 
 /* get user */
-router.get('/user/:id', async (req, res, next) => {
+router.get('/users/:id', async (req, res, next) => {
   const json = await req.clubhouse.getUser(req.params.id)
+  res.json(json);
+});
+
+/* get notifications */
+/* Not working */
+router.get('/notifications', async (req, res, next) => {
+  const json = await req.clubhouse.getNotifications()
   res.json(json);
 });
 
