@@ -30,10 +30,10 @@ class Time extends React.Component {
 
   render() {
     return (
-      <div title={this.props.time}>
+      <span title={this.props.time}>
         {this.state.is_started ? 'In progress ' : 'Starts in '}
         {this.state.remaining}
-      </div>
+      </span>
     );
   }
 }

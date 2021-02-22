@@ -1,27 +1,30 @@
 import * as React from 'react';
-import Channel from './Channel';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadChannels, selectChannels } from '../store/channels';
+import { selectChannels } from '../store/channels';
+import { Box } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Channel from './Channel';
 
 function Channels() {
   const channels = useSelector(selectChannels);
   const dispatch = useDispatch();
 
   return (
-    <div className="channels">
-      <h1>Channels</h1>
-      <button onClick={() => dispatch(loadChannels())}>Refresh channels</button>
-      <ul>
-        {channels.map(ch => (
-          <div>
-            <h2>{ch.topic}</h2>
-            {ch.num_speakers}/{ch.num_all} {ch.is_explore_channel ? 'explore' : 'non-explore'}
-            <i> - {ch.channel}</i>
-            <Channel channelCode={ch.channel}/>
-          </div>
-        ))}
-      </ul>
-    </div>
+    <React.Fragment>
+      <Box m={2}>
+        <Typography variant="h2">
+          Channels
+        </Typography>
+      </Box>
+
+      {channels.map(channel => (
+          <Box m={2}>
+            <Channel channel={channel} />
+          </Box>
+        )
+      )}
+
+    </React.Fragment>
   );
 }
 

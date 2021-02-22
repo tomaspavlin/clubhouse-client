@@ -16,7 +16,7 @@ const channelsSlice = createSlice({
 // actions
 const { setChannels } = channelsSlice.actions;
 
-export const loadChannels = () => async dispatch => {
+export const fetchChannels = () => async dispatch => {
   let res = await fetch("http://localhost:9000/channels")
   res = await res.json()
   const channels = res.channels

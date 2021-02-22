@@ -1,38 +1,54 @@
 import * as React from 'react';
+import { Box, Button, Paper } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
+import { selectProfile } from '../store/user';
 
-class Events extends React.Component {
+class Profile extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { profile: undefined};
-  }
-
-  async getProfile() {
-    let res = await fetch("http://localhost:9000/profile")
-    res = await res.json()
-    this.setState({ profile: res })
   }
 
   render() {
     return (
-      <div>
-        <h1>Profile</h1>
-        <ul>
-          {this.state.profile ? (
-            <div>
-              <h2>{this.state.profile.user_profile.name}</h2>
-              <p>
-                {this.state.profile.user_profile.username} /
-                Invites: {this.state.profile.num_invites} /
-                user_id: {this.state.profile.user_id}
-              </p>
-            </div>
-          ) : (
-            <button onClick={() => this.getProfile()}>Show profile</button>
-          )}
-        </ul>
-      </div>
+      <Box m={2}>
+        <Typography variant="h2">
+          Profile
+        </Typography>
+
+        <Button variant="contained"
+                color="primary"
+                onClick={() => this.props.fetchProfile()}>
+          Show profile
+        </Button>
+
+        <Paper>
+          <Box m={2}>
+            {this.props.profile ? (
+              <React.Fragment>
+                <Typography variant="h4">
+                  {this.props.profile.user_profile.name}
+                </Typography>
+                <Typography variant="p">
+                  {this.props.profile.user_profile.username} /
+                  Invites: {this.props.profile.num_invites} /
+                  user_id: {this.props.profile.user_id}
+                </Typography>
+              </React.Fragment>
+            ) : (
+              <span></span>
+            )}
+          </Box>
+        </Paper>
+      </Box>
     );
   }
 }
 
-export default Events;
+/* Way how to map redux functionality to class component
+*  In function components we use useSelector and useDispatch resp instead
+*  This maps state selectors and state dispatches resp to props */
+export default connect(state => ({
+  profile: selectProfile(state)
+}), {
+})(Profile);
