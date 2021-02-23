@@ -11,6 +11,10 @@ class Events extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.fetchEvents()
+  }
+
   render() {
     return (
       <React.Fragment>

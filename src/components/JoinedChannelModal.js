@@ -33,7 +33,7 @@ class JoinedChannelModal extends React.Component {
          </DialogContent>
          <DialogActions>
            <Button autoFocus onClick={this.handleClose} color="primary">
-             Leave
+             ✌️Leave silently
            </Button>
          </DialogActions>
        </Dialog>

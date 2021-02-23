@@ -1,10 +1,8 @@
-import React from 'react';
-import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { AppBar, Button, CircularProgress, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchEvents } from '../store/events';
-import { fetchChannels } from '../store/channels';
 import { selectPageIndex, setPageIndex } from '../store/page';
 import { PageIndex } from '../model/enums';
 import { fetchProfile, selectProfile } from '../store/user';
@@ -28,19 +26,21 @@ export default function TopBar() {
   const profile = useSelector(selectProfile);
   const classes = useStyles();
 
+  useEffect(() => {
+    // componentDidMount behaviour
+    dispatch(fetchProfile())
+  }, []);
+
   const clickEvents = () => {
     dispatch(setPageIndex(PageIndex.EVENTS))
-    dispatch(fetchEvents())
   };
 
   const clickChannels = () => {
     dispatch(setPageIndex(PageIndex.CHANNELS))
-    dispatch(fetchChannels())
   };
 
   const clickProfile = () => {
     dispatch(setPageIndex(PageIndex.PROFILE))
-    dispatch(fetchProfile())
   };
 
   return (
@@ -61,7 +61,7 @@ export default function TopBar() {
             Channels
           </Button>
           <Button color="inherit" startIcon={<PersonIcon/>}  onClick={clickProfile}>
-            {profile?.user_profile?.username}
+            {profile?.user_profile?.username ?? <CircularProgress color="secondary" size={20} />}
           </Button>
         </Toolbar>
       </AppBar>

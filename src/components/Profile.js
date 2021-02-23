@@ -44,5 +44,4 @@ class Profile extends React.Component {
 *  This maps state selectors and state dispatches resp to props */
 export default connect(state => ({
   profile: selectProfile(state)
-}), {
-})(Profile);
+}))(Profile);
