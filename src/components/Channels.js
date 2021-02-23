@@ -2,9 +2,8 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchChannels, selectChannels } from '../store/channels';
-import { Box } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import Channel from './Channel';
+import BigHeader from './ui/BigHeader';
 
 function Channels() {
   const channels = useSelector(selectChannels);
@@ -18,16 +17,13 @@ function Channels() {
 
   return (
     <React.Fragment>
-      <Box m={2}>
-        <Typography variant="h2">
-          Channels
-        </Typography>
-      </Box>
+
+      <BigHeader>
+        Channels
+      </BigHeader>
 
       {channels.map(channel => (
-          <Box m={2}>
-            <Channel channel={channel} />
-          </Box>
+        <Channel channel={channel} />
         )
       )}
 

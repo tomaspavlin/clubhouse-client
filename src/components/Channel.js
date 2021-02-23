@@ -6,12 +6,13 @@ import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { joinChannel } from '../store/channels';
+import SimpleCard from './ui/SimpleCard';
 
 export default function Channel({channel}) {
   const dispatch = useDispatch()
 
   return (
-    <Card>
+    <SimpleCard>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           Channel
@@ -29,6 +30,6 @@ export default function Channel({channel}) {
           Join channel
         </Button>
       </CardActions>
-    </Card>
+    </SimpleCard>
   );
 };

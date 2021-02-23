@@ -3,6 +3,7 @@ import { Box, Paper } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { selectProfile } from '../store/user';
+import BigHeader from './ui/BigHeader';
 
 class Profile extends React.Component {
   constructor (props) {
@@ -12,9 +13,10 @@ class Profile extends React.Component {
   render() {
     return (
       <Box m={2}>
-        <Typography variant="h2">
+
+        <BigHeader>
           Profile
-        </Typography>
+        </BigHeader>
 
         <Paper>
           <Box m={2}>

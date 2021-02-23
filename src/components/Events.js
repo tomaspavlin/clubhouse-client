@@ -2,8 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { fetchEvents, selectEvents } from '../store/events';
 import Event from './Event';
-import Typography from '@material-ui/core/Typography';
-import { Box } from '@material-ui/core';
+import BigHeader from './ui/BigHeader';
 
 // This could be function component but we want to have code interesting
 class Events extends React.Component {
@@ -18,16 +17,13 @@ class Events extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Box m={2}>
-          <Typography variant="h2">
-            Events
-          </Typography>
-        </Box>
+
+        <BigHeader>
+          Events
+        </BigHeader>
 
         {this.props.events.map(e => (
-          <Box m={2}>
-            <Event event={e} />
-          </Box>
+          <Event event={e} />
           )
         )}
 

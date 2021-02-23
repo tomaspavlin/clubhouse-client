@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
@@ -7,12 +6,13 @@ import Time from './Time';
 import { Button, Chip } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { joinChannel } from '../store/channels';
+import SimpleCard from './ui/SimpleCard';
 
 export default function Event({event}) {
   const dispatch = useDispatch()
 
   return (
-    <Card>
+    <SimpleCard>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           Event
@@ -36,6 +36,6 @@ export default function Event({event}) {
           Join channel
         </Button>
       </CardActions>
-    </Card>
+    </SimpleCard>
   );
 };
