@@ -6,6 +6,13 @@ class Time extends React.Component {
     this.state = { remaining: 0, is_started: false};
   }
 
+  _twoDigits(number) {
+    return number.toLocaleString('en-US', {
+      minimumIntegerDigits: 2,
+      useGrouping: false
+    })
+  }
+
   componentDidMount() {
     const time = Date.parse(this.props.time)
 
@@ -17,7 +24,10 @@ class Time extends React.Component {
       const minutes = Math.floor(seconds / 60)
       const hours = Math.floor(minutes / 60)
 
-      this.setState({ remaining: `${hours}:${minutes%60}:${seconds%60}`, is_started: is_started},)
+      this.setState({
+        remaining: `${this._twoDigits(hours)}:${this._twoDigits(minutes%60)}:${this._twoDigits(seconds%60)}`,
+        is_started: is_started
+      })
     }
 
     this.timer = setInterval(tick, 1000);
@@ -31,7 +41,7 @@ class Time extends React.Component {
   render() {
     return (
       <span title={this.props.time}>
-        {this.state.is_started ? 'In progress ' : 'Starts in '}
+        {this.state.is_started ? 'Started before ' : 'Starts in '}
         {this.state.remaining}
       </span>
     );

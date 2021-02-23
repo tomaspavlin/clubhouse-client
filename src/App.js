@@ -10,6 +10,7 @@ import { selectPageIndex } from './store/page';
 import { PageIndex } from './model/enums';
 import JoinedChannelModal from './components/JoinedChannelModal';
 import BigHeader from './components/ui/BigHeader';
+import OnlineFriends from './components/OnlineFriends';
 
 function App() {
   const pageIndex = useSelector(selectPageIndex)
@@ -38,6 +39,8 @@ function App() {
         return <Events />
       case PageIndex.PROFILE:
         return <Profile />
+      case PageIndex.ONLINE_FRIENDS:
+        return <OnlineFriends />
       default:
         throw new Error(`Page index ${pageIndex} not supported`)
     }

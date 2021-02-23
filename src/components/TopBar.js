@@ -31,12 +31,16 @@ export default function TopBar() {
     dispatch(fetchProfile())
   }, []);
 
+  const clickChannels = () => {
+    dispatch(setPageIndex(PageIndex.CHANNELS))
+  };
+
   const clickEvents = () => {
     dispatch(setPageIndex(PageIndex.EVENTS))
   };
 
-  const clickChannels = () => {
-    dispatch(setPageIndex(PageIndex.CHANNELS))
+  const clickOnlineFriends = () => {
+    dispatch(setPageIndex(PageIndex.ONLINE_FRIENDS))
   };
 
   const clickProfile = () => {
@@ -54,11 +58,14 @@ export default function TopBar() {
             Clubhouse Client
           </Typography>
 
+          <Button color="inherit" onClick={clickChannels}>
+            Channels
+          </Button>
           <Button color="inherit" onClick={clickEvents}>
             Events
           </Button>
-          <Button color="inherit" onClick={clickChannels}>
-            Channels
+          <Button color="inherit" onClick={clickOnlineFriends}>
+            Online friends
           </Button>
           <Button color="inherit" startIcon={<PersonIcon/>}  onClick={clickProfile}>
             {profile?.user_profile?.username ?? <CircularProgress color="secondary" size={20} />}

@@ -51,4 +51,10 @@ router.get('/notifications', async (req, res, next) => {
   res.json(json);
 });
 
+/* get online friends */
+router.get('/online-friends', async (req, res, next) => {
+  const json = await req.clubhouse.getOnlineFriends()
+  res.json(json);
+});
+
 module.exports = router;

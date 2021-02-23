@@ -54,9 +54,8 @@ class Audio extends React.Component {
 
   render() {
     return (
-      <div>
-        Audio playing...
-      </div>
+      <React.Fragment>
+      </React.Fragment>
     );
   }
 }

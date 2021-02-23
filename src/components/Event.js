@@ -31,11 +31,13 @@ export default function Event({event}) {
            {event.description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <Button color="primary" onClick={() => dispatch(joinChannel(event.channel))}>
-          Join channel
-        </Button>
-      </CardActions>
+      {event.channel ? (
+        <CardActions disableSpacing>
+          <Button color="primary" onClick={() => dispatch(joinChannel(event.channel))}>
+            Join channel
+          </Button>
+        </CardActions>
+      ) : ''}
     </SimpleCard>
   );
 };
