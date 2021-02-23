@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Button, Paper } from '@material-ui/core';
+import { Box, Paper } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { selectProfile } from '../store/user';
@@ -15,12 +15,6 @@ class Profile extends React.Component {
         <Typography variant="h2">
           Profile
         </Typography>
-
-        <Button variant="contained"
-                color="primary"
-                onClick={() => this.props.fetchProfile()}>
-          Show profile
-        </Button>
 
         <Paper>
           <Box m={2}>

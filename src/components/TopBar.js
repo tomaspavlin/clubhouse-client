@@ -7,7 +7,8 @@ import { fetchEvents } from '../store/events';
 import { fetchChannels } from '../store/channels';
 import { selectPageIndex, setPageIndex } from '../store/page';
 import { PageIndex } from '../model/enums';
-import { fetchProfile } from '../store/user';
+import { fetchProfile, selectProfile } from '../store/user';
+import PersonIcon from '@material-ui/icons/Person';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 export default function TopBar() {
   const dispatch = useDispatch();
   const pageIndex = useSelector(selectPageIndex);
+  const profile = useSelector(selectProfile);
   const classes = useStyles();
 
   const clickEvents = () => {
@@ -58,8 +60,8 @@ export default function TopBar() {
           <Button color="inherit" onClick={clickChannels}>
             Channels
           </Button>
-          <Button color="inherit" onClick={clickProfile}>
-            Profile
+          <Button color="inherit" startIcon={<PersonIcon/>}  onClick={clickProfile}>
+            {profile?.user_profile?.username}
           </Button>
         </Toolbar>
       </AppBar>

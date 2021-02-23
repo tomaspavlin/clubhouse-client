@@ -7,6 +7,7 @@ import TopBar from './components/TopBar';
 import { useSelector } from 'react-redux';
 import { selectPageIndex } from './store/page';
 import { PageIndex } from './model/enums';
+import JoinedChannelModal from './components/JoinedChannelModal';
 
 function App() {
   const pageIndex = useSelector(selectPageIndex)
@@ -27,6 +28,7 @@ function App() {
   return (
     <div className="App">
       <TopBar />
+      <JoinedChannelModal/>
       <Container maxWidth="md">
         {renderPage()}
       </Container>

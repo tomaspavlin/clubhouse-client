@@ -3,10 +3,13 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import JoinedChannel from './JoinedChannel';
 import { Button } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { joinChannel } from '../store/channels';
 
 export default function Channel({channel}) {
+  const dispatch = useDispatch()
+
   return (
     <Card>
       <CardContent>
@@ -22,10 +25,9 @@ export default function Channel({channel}) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button color="primary">
-          Open channel
+        <Button color="primary" onClick={() => dispatch(joinChannel(channel.channel))}>
+          Join channel
         </Button>
-        <JoinedChannel channelCode={channel.channel}/>
       </CardActions>
     </Card>
   );
