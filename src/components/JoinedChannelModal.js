@@ -4,14 +4,10 @@ import { leaveChannel, selectIsModalOpened, selectJoinedChannel } from '../store
 import { Avatar, Box, Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Tooltip, withStyles } from '@material-ui/core';
 import Audio from './Audio';
 import Typography from '@material-ui/core/Typography';
+import UsersAvatars from './UsersAvatars';
 
 const styles = () => ({
-  // Could be crated easily differently
-  avatars: {
-    '& > *': {
-      margin: 10,
-    },
-  },
+  // Not used now but it can be handy later
 });
 
 class JoinedChannelModal extends React.Component {
@@ -19,20 +15,9 @@ class JoinedChannelModal extends React.Component {
     this.props.leaveChannel()
   };
 
-  renderAvatars(users) {
-    const { classes } = this.props;
-    return (
-      <Box display="flex" flexWrap="wrap" className={classes.avatars}>
-        {users.map((user) => (
-          <Tooltip title={user.name}>
-            <Avatar key={user.user_id} src={user.photo_url} />
-          </Tooltip>
-        ))}
-      </Box>
-    )
-  }
-
   render() {
+    const { classes } = this.props; // Not used now but it can be handy later
+
     const openedModal = (
      <React.Fragment>
        <Dialog onClose={this.handleClose}
@@ -45,7 +30,7 @@ class JoinedChannelModal extends React.Component {
              <DialogTitle onClose={this.handleClose}>
                {this.props.channel.club_name ? (
                  <Typography color="textSecondary">
-                   {this.props.channel.club_name}
+                   {this.props.channel.club_name} 🏠
                  </Typography>
                ) : ''}
                {this.props.channel.topic}
@@ -57,18 +42,17 @@ class JoinedChannelModal extends React.Component {
              </DialogTitle>
              <DialogContent dividers>
 
-
                <Typography color="textSecondary" gutterBottom>
                  Speakers
                </Typography>
-               {this.renderAvatars(this.props.channel.users.filter(user => user.is_speaker).slice(0, 30))}
+               <UsersAvatars users={this.props.channel.users.filter(user => user.is_speaker).slice(0, 18)} />
 
                <Divider />
 
                <Typography color="textSecondary" gutterBottom>
                  Other users
                </Typography>
-               {this.renderAvatars(this.props.channel.users.filter(user => !user.is_speaker).slice(0, 30))}
+               <UsersAvatars users={this.props.channel.users.filter(user => !user.is_speaker).slice(0, 9)} />
 
                <Audio channelCode={this.props.channel.channel} token={this.props.channel.token} />
 

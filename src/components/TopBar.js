@@ -52,14 +52,14 @@ export default function TopBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
+            👋
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Clubhouse Client
           </Typography>
 
           <Button color="inherit" onClick={clickChannels}>
-            Channels
+            Rooms
           </Button>
           <Button color="inherit" onClick={clickEvents}>
             Events

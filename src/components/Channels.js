@@ -19,7 +19,7 @@ function Channels() {
     <React.Fragment>
 
       <BigHeader>
-        Channels
+        Rooms
       </BigHeader>
 
       {channels.map(channel => (

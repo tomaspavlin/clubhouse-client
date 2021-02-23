@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { selectProfile } from '../store/user';
 import BigHeader from './ui/BigHeader';
+import SimpleCard from './ui/SimpleCard';
 
 class Profile extends React.Component {
   constructor (props) {
@@ -18,24 +19,24 @@ class Profile extends React.Component {
           Profile
         </BigHeader>
 
-        <Paper>
+        <SimpleCard>
           <Box m={2}>
             {this.props.profile ? (
               <React.Fragment>
                 <Typography variant="h4">
                   {this.props.profile.user_profile.name}
                 </Typography>
-                <Typography paragraph>
-                  {this.props.profile.user_profile.username} /
-                  Invites: {this.props.profile.num_invites} /
-                  user_id: {this.props.profile.user_id}
+                <Typography color="textSecondary" paragraph>
+                  {this.props.profile.user_profile.username} |
+                  invites: {this.props.profile.num_invites} |
+                  user_id: {this.props.profile.user_profile.user_id}
                 </Typography>
               </React.Fragment>
             ) : (
               <span></span>
             )}
           </Box>
-        </Paper>
+        </SimpleCard>
       </Box>
     );
   }
