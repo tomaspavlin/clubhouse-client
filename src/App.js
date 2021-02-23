@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import Channels from './components/Channels';
 import Events from './components/Events';
 import Profile from './components/Profile';
@@ -8,9 +9,26 @@ import { useSelector } from 'react-redux';
 import { selectPageIndex } from './store/page';
 import { PageIndex } from './model/enums';
 import JoinedChannelModal from './components/JoinedChannelModal';
+import BigHeader from './components/ui/BigHeader';
 
 function App() {
   const pageIndex = useSelector(selectPageIndex)
+
+  const [isOutdated, setIsOutdated] = useState(false)
+
+  useEffect(() => {
+    (async () => {
+      let res = await fetch("http://localhost:9000/check-for-update")
+      res = await res.json()
+      if(!res.success) {
+        throw new Error('Check for update not successful')
+      }
+      if (res.is_mandatory) {
+        console.error("Application is outdated. Please update to the latest version")
+        setIsOutdated(true);
+      }
+    })();
+  }, []);
 
   const renderPage = () => {
     switch (pageIndex) {
@@ -28,6 +46,9 @@ function App() {
   return (
     <div className="App">
       <TopBar />
+      {isOutdated ? (
+        <BigHeader>Application is outdated and may not work with the Clubhouse API. Please update!</BigHeader>
+      ) : ''}
       <JoinedChannelModal/>
       <Container maxWidth="md">
         {renderPage()}

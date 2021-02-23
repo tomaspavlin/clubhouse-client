@@ -5,11 +5,6 @@ import JoinedChannel from './JoinedChannel';
 import { Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 
 class JoinedChannelModal extends React.Component {
-  constructor (props) {
-    super(props)
-    console.assert(props.channel !== undefined);
-  }
-
   handleClose = () => {
     this.props.leaveChannel()
   };

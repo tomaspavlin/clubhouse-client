@@ -23,7 +23,7 @@ class Events extends React.Component {
         </BigHeader>
 
         {this.props.events.map(e => (
-          <Event event={e} />
+          <Event key={e.event_id} event={e} />
           )
         )}
 

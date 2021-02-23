@@ -25,7 +25,7 @@ class Profile extends React.Component {
                 <Typography variant="h4">
                   {this.props.profile.user_profile.name}
                 </Typography>
-                <Typography variant="p">
+                <Typography paragraph>
                   {this.props.profile.user_profile.username} /
                   Invites: {this.props.profile.num_invites} /
                   user_id: {this.props.profile.user_id}

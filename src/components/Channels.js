@@ -23,7 +23,7 @@ function Channels() {
       </BigHeader>
 
       {channels.map(channel => (
-        <Channel channel={channel} />
+        <Channel key={channel.channel_id} channel={channel} />
         )
       )}
 
