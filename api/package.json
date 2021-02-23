@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "profile": "cd node_modules/clubhouse-api && npm run profile && cp profile.json ../../profile.json"
+    "login": "cd node_modules/clubhouse-api && npm run profile && cp profile.json ../../profile.json"
   },
   "dependencies": {
-    "clubhouse-api": "git+https://github.com/Seia-Soto/clubhouse-api#1.0.16",
+    "clubhouse-api": "git+https://github.com/Seia-Soto/clubhouse-api#1.0.17",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "^4.3.1",

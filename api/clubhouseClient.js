@@ -29,8 +29,14 @@ const initializeClubhouseClient = () => {
     profile.userId = ctx.user.user_id
     profile.deviceId = ctx.deviceId
   } else {
-    console.log("profile.json file not found")
-    throw new Error("profile.json file not found")
+    console.log(
+      "=============================================\n" +
+      "|| Error: YOU ARE NOT LOGGED IN TO CLUBHOUSE! \n" +
+      "|| To use the Clubhouse Client, you need to login to your Clubhouse account first through CLI. \n" +
+      "|| Please run `npm run login` to login to your Clubhouse account. Login feature through UI is not implemented yet. \n" +
+      "============================================="
+    )
+    process.exit(1)
   }
 
   const clubhouse = new Client({ profile: profile })
