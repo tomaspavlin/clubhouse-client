@@ -24,6 +24,7 @@ export const fetchProfile = () => async dispatch => {
 
 // selectors
 export const selectProfile = state => state.user.profile;
+export const selectUserId = state => state.user.profile?.user_profile?.user_id
 
 // reducer
 export const userReducer = userSlice.reducer;

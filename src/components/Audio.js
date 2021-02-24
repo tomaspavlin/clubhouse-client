@@ -1,18 +1,9 @@
 import * as React from 'react';
-
-
 import AgoraRTC from 'agora-rtc-sdk-ng';
-import profileJson from '../profile.json';
 
 class Audio extends React.Component {
   constructor (props) {
     super(props)
-
-    const profile = {}
-    profile.token = profileJson.tokens.auth
-    profile.userId = profileJson.user.user_id
-    profile.deviceId = profileJson.deviceId
-    this.profile = profile
 
     const options = {
       mode: 'rtc',
@@ -33,11 +24,17 @@ class Audio extends React.Component {
 
   async start(channelId, channelToken) {
     console.log("Connecting to audio stream using agora with parameters:")
-    console.log([this.agoraKey, channelId, channelToken, this.profile.userId])
+    console.log([this.agoraKey, channelId, channelToken, this.props.userId])
 
-    await this.agoraClient.join(
-      this.agoraKey, channelId, channelToken, this.profile.userId
-    )
+    try {
+      await this.agoraClient.join(
+        this.agoraKey, channelId, channelToken, this.props.userId
+      )
+    } catch (e) {
+      console.error("Error occured when joining the audio stream:");
+      console.error(e);
+      this.props.onError(e);
+    }
 
     this.agoraClient.on("user-published", async (user, mediaType) => {
       await this.agoraClient.subscribe(user, mediaType);

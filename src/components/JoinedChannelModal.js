@@ -1,16 +1,30 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { leaveChannel, selectIsModalOpened, selectJoinedChannel } from '../store/channels';
-import { Avatar, Box, Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Tooltip, withStyles } from '@material-ui/core';
+import { Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, Divider, withStyles } from '@material-ui/core';
 import Audio from './Audio';
 import Typography from '@material-ui/core/Typography';
 import UsersAvatars from './UsersAvatars';
+import { selectUserId } from '../store/user';
 
 const styles = () => ({
   // Not used now but it can be handy later
 });
 
 class JoinedChannelModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      errorMessage: undefined
+    }
+  }
+
+  handleError(error) {
+    this.setState({
+      errorMessage: error.message
+    });
+  }
+
   handleClose = () => {
     this.props.leaveChannel()
   };
@@ -38,7 +52,12 @@ class JoinedChannelModal extends React.Component {
                  {this.props.channel.users.length} users |{' '}
                  <a href={this.props.channel.url} target="_blank">Open in official Clubhouse</a>
                </Typography>
-
+               {this.state.errorMessage ? (
+                 <Typography color="error">
+                   😱Error:{' '}
+                   {this.state.errorMessage}
+                 </Typography>
+               ) : ''}
              </DialogTitle>
              <DialogContent dividers>
 
@@ -54,7 +73,10 @@ class JoinedChannelModal extends React.Component {
                </Typography>
                <UsersAvatars users={this.props.channel.users.filter(user => !user.is_speaker).slice(0, 9)} />
 
-               <Audio channelCode={this.props.channel.channel} token={this.props.channel.token} />
+               <Audio channelCode={this.props.channel.channel}
+                      token={this.props.channel.token}
+                      userId={this.props.userId}
+                      onError={(error) => this.handleError(error)} />
 
              </DialogContent>
            </React.Fragment>
@@ -95,6 +117,7 @@ export default withStyles(
     connect(state => ({
       channel: selectJoinedChannel(state),
       isModalOpened: selectIsModalOpened(state),
+      userId: selectUserId(state),
     }), {
       leaveChannel
     })(JoinedChannelModal)
