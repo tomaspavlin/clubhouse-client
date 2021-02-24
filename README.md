@@ -8,7 +8,7 @@ This repo is for everyone, who wants to Clubhouse but has no access to iOS devic
 to contribute!
 
 # Screenshot
-![screenshot](screenshot.png)
+![screenshot](screenshot.jpg)
 
 ## Install
 Make sure you have the following tools installed:
