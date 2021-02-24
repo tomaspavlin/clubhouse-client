@@ -25,7 +25,7 @@ export default function Channel({channel}) {
         <Typography color="textSecondary">
           {channel.num_all} users
         </Typography>
-        <UsersAvatars users={channel.users.slice(0, 10)} />
+        <UsersAvatars users={channel.users.slice(0, 5)} />
       </CardContent>
       <CardActions disableSpacing>
         <Button color="primary" onClick={() => dispatch(joinChannel(channel.channel))}>

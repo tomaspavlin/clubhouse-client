@@ -32,7 +32,7 @@ export default function Event({event}) {
         <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
            {event.description}
         </Typography>
-        <UsersAvatars users={event.hosts.slice(0, 6)} />
+        <UsersAvatars users={event.hosts.slice(0, 5)} />
       </CardContent>
       {event.channel ? (
         <CardActions disableSpacing>
