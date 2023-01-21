@@ -1,6 +1,8 @@
 # Clubhouse Client
 
-**Note that the audio is currently not properly working due to changes in AgoraRTC. Any PR to fix this is welcomed.**
+**⚠️ Note that the audio is currently not properly working due to changes in AgoraRTC. Any PR to fix this is welcomed. ⚠️**
+
+## Description
 
 Web client for Clubhouse - Drop-in audio chat. The client is build using React
 and uses Node JS as a backend proxy. It utilizes unofficial Clubhouse API using
@@ -9,10 +11,10 @@ an awesome npm library [Seia-Soto/clubhouse-api](https://github.com/Seia-Soto/cl
 This repo is for everyone, who wants to Clubhouse but has no access to iOS device. Feel free
 to contribute!
 
-# Screenshot
+## Screenshot
 ![screenshot](screenshot.jpg)
 
-## Install
+## How to install
 Make sure you have the following tools installed:
 - npm
 - yarn
@@ -26,7 +28,7 @@ yarn install
 cd api && yarn install
 ```
 
-## Run
+## How to run
 Before running the client, you need to login to Clubhouse using CLI. It is for the reason
 that the frontend login is not implemented yet and CLI is also quite user-friendly. To login to Clubhouse:
 
