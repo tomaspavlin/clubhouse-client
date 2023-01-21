@@ -1,5 +1,7 @@
 # Clubhouse Client
 
+**Note that the audio is currently not properly working due to changes in AgoraRTC. Any PR to fix this is welcomed.**
+
 Web client for Clubhouse - Drop-in audio chat. The client is build using React
 and uses Node JS as a backend proxy. It utilizes unofficial Clubhouse API using
 an awesome npm library [Seia-Soto/clubhouse-api](https://github.com/Seia-Soto/clubhouse-api).
